@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase/config';
 import { useNavigate } from 'react-router-dom';
-import '../styles/Login.css';
+import '../styles/login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -97,3 +97,4 @@ const Login = () => {
 };
 
 export default Login;
+
