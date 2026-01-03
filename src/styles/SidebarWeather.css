@@ -1,0 +1,162 @@
+/* =========================
+   CARD PRINCIPAL
+========================= */
+.sidebar-weather-card {
+  background: linear-gradient(180deg, #0b1d33, #13294b);
+  color: #fff;
+  border-radius: 18px;
+  padding: 16px;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
+}
+
+/* =========================
+   HEADER
+========================= */
+.weather-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.weather-header .menu {
+  font-size: 20px;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+/* =========================
+   CLIMA ATUAL
+========================= */
+.weather-now {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 14px 0 10px;
+}
+
+.weather-now .icon {
+  font-size: 36px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.weather-now .temp {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.weather-now .humidity {
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+/* =========================
+   PREVISÃO HORÁRIA
+========================= */
+.weather-hourly {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scroll-snap-type: x mandatory;
+}
+
+.weather-hourly::-webkit-scrollbar {
+  height: 6px;
+}
+
+.weather-hourly::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.25);
+  border-radius: 10px;
+}
+
+.hour {
+  min-width: 64px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 8px 6px;
+  text-align: center;
+  scroll-snap-align: start;
+  backdrop-filter: blur(6px);
+}
+
+.hour-time {
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+.hour-icon {
+  font-size: 20px;
+  margin: 4px 0;
+  animation: pulse 2.5s infinite;
+}
+
+.hour-temp {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.hour-rain {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+/* =========================
+   ANIMAÇÕES
+========================= */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+/* Tablets */
+@media (max-width: 991px) {
+  .sidebar-weather-card {
+    max-width: 100%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 661px) {
+  .weather-now {
+    justify-content: space-between;
+  }
+
+  .weather-now .temp {
+    font-size: 26px;
+  }
+
+  .hour {
+    min-width: 58px;
+  }
+}
+
+/* =========================
+   ERRO / SKELETON (se já existirem)
+========================= */
+.sidebar-weather.error {
+  background: #2a0f0f;
+  color: #fff;
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.sidebar-weather.skeleton {
+  background: linear-gradient(90deg, #1a1a1a, #2a2a2a, #1a1a1a);
+  border-radius: 14px;
+  height: 200px;
+}

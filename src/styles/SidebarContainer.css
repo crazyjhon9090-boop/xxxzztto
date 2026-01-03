@@ -1,0 +1,42 @@
+/* =========================
+   SIDEBAR CONTAINER
+========================= */
+
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 320px;
+}
+
+/* =========================
+   DESKTOP (>= 992px)
+========================= */
+@media (min-width: 992px) {
+  .sidebar-container {
+    position: sticky;
+    top: 20px;
+    align-self: flex-start;
+  }
+}
+
+/* =========================
+   TABLET (661px – 991px)
+========================= */
+@media (min-width: 661px) and (max-width: 991px) {
+  .sidebar-container {
+    width: 100%;
+    margin-top: 40px;
+  }
+}
+
+/* =========================
+   MOBILE (até 660px)
+========================= */
+@media (max-width: 660px) {
+  .sidebar-container {
+    width: 100%;
+    margin-top: 35px;
+    gap: 20px;
+  }
+}

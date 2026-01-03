@@ -1,0 +1,133 @@
+/* =========================
+   NEWS BAR
+========================= */
+.news-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  padding: 8px 20px;
+  font-size: 13px;
+
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+
+  overflow: hidden;
+  z-index: 50;
+  gap: 14px;
+}
+
+/* Linha inferior */
+.news-bar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(0, 0, 0, 0.12),
+    transparent
+  );
+}
+
+/* =========================
+   SCROLL
+========================= */
+.news-scroll-wrapper {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.news-scroll {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  white-space: nowrap;
+
+  animation: scrollNews 35s linear infinite;
+}
+
+.news-scroll:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrollNews {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* =========================
+   ITEM
+========================= */
+.news-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #111;
+  text-decoration: none;
+  font-weight: 500;
+  opacity: 0.9;
+
+  transition: opacity .2s ease;
+}
+
+.news-item:hover {
+  opacity: 1;
+}
+
+.news-item img {
+  width: 34px;
+  height: 34px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,.12);
+}
+
+/* Texto com 2 linhas */
+.news-item span {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+
+  max-width: 380px;
+  line-height: 1.25;
+}
+
+/* =========================
+   USD
+========================= */
+.usd {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  padding-left: 18px;
+  border-left: 1px solid rgba(0,0,0,.15);
+
+  font-weight: 600;
+  color: #111;
+  white-space: nowrap;
+}
+
+/* TABLET */
+@media (max-width: 991px) {
+  .news-item span { max-width: 280px; }
+  .usd { font-size: 12px; }
+}
+
+/* MOBILE */
+@media (max-width: 661px) {
+  .usd { display: none; }
+  .news-item span { max-width: 220px; }
+}

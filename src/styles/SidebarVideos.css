@@ -1,0 +1,186 @@
+/* =========================
+   CONTAINER — sidebar moderna
+========================= */
+.sidebar-videos {
+  position: relative;
+  padding: 18px 16px;
+
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 18px;
+
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* =========================
+   SHAPES COM BLUR
+========================= */
+.sidebar-videos::before,
+.sidebar-videos::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.55;
+  z-index: 0;
+}
+
+/* canto esquerdo alto */
+.sidebar-videos::before {
+  width: 190px;
+  height: 190px;
+  background: #9fc5ff;
+  top: -50px;
+  left: -50px;
+}
+
+/* shapes centrais + inferiores (radial gradient) */
+.sidebar-videos::after {
+  inset: 0;
+  background:
+    radial-gradient(220px 180px at 50% 55%, #e4d8ff 0%, transparent 65%),
+    radial-gradient(200px 160px at 80% 95%, #c8afff 0%, transparent 70%);
+}
+
+/* conteúdo acima do blur */
+.sidebar-videos > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* =====================
+   TÍTULO
+===================== */
+.sidebar-title {
+  font-family: "Playfair Display", serif;
+  font-size: 19px;
+  margin-bottom: 14px;
+  color: #0f172a;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sidebar-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(0, 0, 0, .12);
+}
+
+/* =====================
+   VÍDEOS
+===================== */
+.video-card {
+  margin-bottom: 18px;
+  transition: transform .2s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-3px);
+}
+
+.video-iframe iframe {
+  width: 100%;
+  height: 180px;
+  border-radius: 10px;
+}
+
+.video-title {
+  display: block;
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+.video-title:hover {
+  color: #2563eb;
+}
+
+/* =====================
+   CATEGORIAS
+===================== */
+.video-categories {
+  margin-top: 24px;
+}
+
+.video-categories h4 {
+  font-family: "Playfair Display", serif;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.category-btn {
+  background: #f8fafc;
+  padding: 6px 13px;
+  font-size: 13px;
+  border-radius: 30px;
+  text-decoration: none;
+  color: #334155;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
+}
+
+.category-btn:hover {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #fff;
+}
+
+/* =========================
+   TABLET (661px – 991px)
+========================= */
+@media (min-width: 661px) and (max-width: 991px) {
+  .sidebar-videos {
+    padding: 14px;
+  }
+
+  .video-iframe iframe {
+    height: 200px;
+  }
+
+  .sidebar-title {
+    font-size: 18px;
+  }
+
+  .video-title {
+    font-size: 13px;
+  }
+}
+
+/* =========================
+   MOBILE (até 661px)
+========================= */
+@media (max-width: 661px) {
+  .sidebar-videos {
+    margin-top: 28px;
+    padding: 14px;
+  }
+
+  .video-iframe iframe {
+    height: 190px;
+  }
+
+  .sidebar-title {
+    font-size: 17px;
+  }
+
+  .video-title {
+    font-size: 13px;
+  }
+
+  .category-btn {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+}
