@@ -1,0 +1,73 @@
+import { db, functions } from '../firebase/config';
+import {
+  collection,
+  getDocs,
+  getDoc,
+  doc,
+  updateDoc,
+  deleteDoc,
+  query,
+  orderBy,
+  serverTimestamp,
+} from 'firebase/firestore';
+import { httpsCallable } from 'firebase/functions';
+
+/* =====================================================
+   FUNÇÕES GENÉRICAS
+===================================================== */
+
+export const getAllDocuments = async (collectionName, orderField = 'createdAt') => {
+  const q = query(collection(db, collectionName), orderBy(orderField, 'desc'));
+  const snapshot = await getDocs(q);
+
+  return snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+};
+
+export const getDocumentById = async (collectionName, id) => {
+  const snap = await getDoc(doc(db, collectionName, id));
+  return snap.exists() ? { id: snap.id, ...snap.data() } : null;
+};
+
+export const updateDocument = async (collectionName, id, data) => {
+  await updateDoc(doc(db, collectionName, id), {
+    ...data,
+    updatedAt: serverTimestamp(),
+  });
+};
+
+export const deleteDocument = async (collectionName, id) => {
+  await deleteDoc(doc(db, collectionName, id));
+};
+
+/* =====================================================
+   USERS (RBAC)
+===================================================== */
+
+// listar usuários
+export const getAllUserProfiles = async () => {
+  const snapshot = await getDocs(collection(db, 'users'));
+  return snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+};
+
+// atualizar dados simples (NÃO role)
+export const updateUserProfile = async (uid, data) => {
+  await updateDocument('users', uid, data);
+};
+
+// 🔐 criar usuário (Auth + Firestore + Claims)
+export const createUser = async (userData) => {
+  const fn = httpsCallable(functions, 'createUser');
+  return await fn(userData);
+};
+
+// 🔐 alterar role (claims + firestore)
+export const updateUserRole = async (uid, role) => {
+  const fn = httpsCallable(functions, 'updateUserRole');
+  return await fn({ uid, role });
+};
+
+// 🔐 deletar usuário (auth + firestore)
+export const deleteUser = async (uid) => {
+  const fn = httpsCallable(functions, 'deleteUser');
+  return await fn({ uid });
+};
