@@ -5,16 +5,12 @@ const NewsBar = () => {
   const [news, setNews] = useState([]);
   const [usd, setUsd] = useState(null);
 
-  const API_KEY = import.meta.env.VITE_GNEWS_API_KEY;
-
   useEffect(() => {
     loadNews();
     loadDollar();
   }, []);
 
   const loadNews = async () => {
-    if (!API_KEY) return;
-
     const cached = localStorage.getItem('news_cache');
     const cacheTime = localStorage.getItem('news_cache_time');
 
@@ -24,17 +20,19 @@ const NewsBar = () => {
     }
 
     try {
-      const res = await fetch(
-        `https://gnews.io/api/v4/top-headlines?lang=pt&country=br&max=5&apikey=${API_KEY}`
-      );
+      // 🚨 CHAMA SUA API SERVERLESS, NÃO O GNEWS
+      const res = await fetch('/api/news');
+
+      if (!res.ok) throw new Error('Erro ao buscar notícias');
 
       const data = await res.json();
+
       setNews(data.articles || []);
 
-      localStorage.setItem('news_cache', JSON.stringify(data.articles));
+      localStorage.setItem('news_cache', JSON.stringify(data.articles || []));
       localStorage.setItem('news_cache_time', Date.now());
     } catch (err) {
-      console.error(err);
+      console.error('Erro news:', err);
     }
   };
 
@@ -48,16 +46,11 @@ const NewsBar = () => {
     } catch {}
   };
 
-  // limita a quantidade visível
   const visibleNews = news.slice(0, 4);
-
-  // duplica só essas para o scroll ficar suave
   const scrollingNews = [...visibleNews, ...visibleNews];
-
 
   return (
     <div className="news-bar">
-
       <div className="news-scroll-wrapper">
         <div className="news-scroll">
           {scrollingNews.length ? (
@@ -77,7 +70,6 @@ const NewsBar = () => {
                     onError={(e) => (e.target.style.display = 'none')}
                   />
                 )}
-
                 <span>{n.title}</span>
               </a>
             ))
