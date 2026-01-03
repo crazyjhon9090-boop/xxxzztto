@@ -1,0 +1,120 @@
+// criar coleão audits-logs no firebase para auditoria
+
+MODEL:
+
+{
+  "action": "CREATE_USER",
+  "targetUid": "abc123",
+  "targetEmail": "editor@site.com",
+  "assignedRole": "editor",
+  "performedBy": "rootUid999",
+  "performerRole": "root_admin",
+  "createdAt": "timestamp"
+}
+
+
+
+const { onCall, HttpsError } = require('firebase-functions/v2/https');
+const admin = require('firebase-admin');
+
+if (!admin.apps.length) {
+  admin.initializeApp();
+}
+
+// 🔒 ROLES VÁLIDAS
+const ALLOWED_ROLES = ['user', 'editor', 'admin', 'root_admin'];
+
+exports.createUser = onCall(
+  { region: 'us-central1' },
+  async (request) => {
+    const { auth, data } = request;
+
+    /* =========================
+       AUTH
+    ========================= */
+    if (!auth) {
+      throw new HttpsError(
+        'unauthenticated',
+        'Usuário não autenticado'
+      );
+    }
+
+    const requesterUid = auth.uid;
+    const requesterRole = auth.token.role;
+
+    if (!['admin', 'root_admin'].includes(requesterRole)) {
+      throw new HttpsError(
+        'permission-denied',
+        'Apenas administradores podem criar usuários'
+      );
+    }
+
+    /* =========================
+       DATA VALIDATION
+    ========================= */
+    const { email, password, role } = data;
+
+    if (!email || !password || !role) {
+      throw new HttpsError(
+        'invalid-argument',
+        'Email, senha e role são obrigatórios'
+      );
+    }
+
+    if (!ALLOWED_ROLES.includes(role)) {
+      throw new HttpsError(
+        'invalid-argument',
+        'Role inválida'
+      );
+    }
+
+    /* =========================
+       BUSINESS RULES
+    ========================= */
+
+    // 🔥 ADMIN NÃO cria ROOT_ADMIN
+    if (role === 'root_admin' && requesterRole !== 'root_admin') {
+      throw new HttpsError(
+        'permission-denied',
+        'Apenas ROOT_ADMIN pode criar outro ROOT_ADMIN'
+      );
+    }
+
+    /* =========================
+       CREATE USER
+    ========================= */
+    const user = await admin.auth().createUser({
+      email,
+      password,
+    });
+
+    await admin.auth().setCustomUserClaims(user.uid, { role });
+
+    await admin.firestore().collection('users').doc(user.uid).set({
+      email,
+      role,
+      createdAt: admin.firestore.FieldValue.serverTimestamp(),
+    });
+
+    /* =========================
+       AUDIT LOG
+    ========================= */
+    await admin.firestore().collection('audit_logs').add({
+      action: 'CREATE_USER',
+      targetUid: user.uid,
+      targetEmail: email,
+      assignedRole: role,
+      performedBy: requesterUid,
+      performerRole: requesterRole,
+      createdAt: admin.firestore.FieldValue.serverTimestamp(),
+    });
+
+    return {
+      uid: user.uid,
+      email,
+      role,
+    };
+  }
+);
+
+exports.setUserRole = require('./setUserRole').setUserRole;
