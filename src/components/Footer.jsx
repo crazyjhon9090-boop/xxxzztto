@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../styles/footer.css";
+import "../styles/Footer.css";
 import logo1 from "../assets/logo-ea.png";
 
 const Footer = () => {
@@ -85,3 +85,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
