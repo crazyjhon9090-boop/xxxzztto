@@ -1,0 +1,86 @@
+Onde eu configuro o email que vai receber?
+
+👉 NO EMAILJS, não no código.
+
+Passo a passo:
+🔹 1. Criar conta
+
+https://www.emailjs.com/
+
+Login com Google (recomendado)
+
+🔹 2. Criar um EMAIL SERVICE
+
+No painel:
+
+Email Services
+
+Add New Service
+
+Escolha: Gmail
+
+Conecte o email que vai receber as mensagens
+👉 esse é o email do dono do site
+
+📌 Exemplo:
+
+service_id: service_gmail_site
+
+🔹 3. Criar um TEMPLATE
+
+Vá em Email Templates
+
+Create New Template
+
+Exemplo de template:
+
+Subject
+
+Novo contato pelo site
+
+
+Body
+
+Nome: {{name}}
+Email: {{email}}
+Telefone: {{phone}}
+Categoria: {{category}}
+
+Mensagem:
+{{message}}
+
+
+📌 O que importa aqui:
+
+Os nomes {{name}}, {{email}}, etc.
+
+Eles precisam bater com o que você enviar no React
+
+Salva e guarda:
+
+template_id: template_contact
+
+🔹 4. Pegar sua PUBLIC KEY
+
+Account → API Keys
+
+📌 Exemplo:
+
+public_key: AbC123xyz
+
+2️⃣ Onde entra o formulário no código?
+
+👉 No Contact.jsx
+
+Esse é o lugar certo.
+
+
+MODEL DO EMAILJS:
+
+Nome: {{name}}
+Email: {{email}}
+Telefone: {{phone}}
+Categoria: {{category}}
+
+Mensagem:
+{{message}}
