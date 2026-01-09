@@ -1,0 +1,70 @@
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+
+
+
+/* =========================
+   LAYOUT BASE (TODAS AS PAGES)
+========================= */
+
+.page-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 40px;
+  align-items: start;
+}
+
+/* MOBILE / TABLET */
+@media (max-width: 991px) {
+  .page-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+/* =========================
+   CONTEÚDO PRINCIPAL
+========================= */
+
+.page-article {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* MOBILE */
+@media (max-width: 660px) {
+  .page-article {
+    max-width: 100%;
+    padding: 0 14px;
+  }
+}
+
+/* =========================
+   SIDEBAR (COMPORTAMENTO PADRÃO)
+========================= */
+
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* MOBILE */
+@media (max-width: 660px) {
+  .sidebar-container {
+    align-items: center;
+  }
+
+  .sidebar-container > * {
+    width: 100%;
+    max-width: 390px;
+    margin: 0 auto;
+  }
+}

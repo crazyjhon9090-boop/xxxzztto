@@ -1,0 +1,87 @@
+.sidebar-weather-card {
+  background: linear-gradient(180deg, #0b1d33, #13294b);
+  color: #fff;
+  border-radius: 18px;
+  padding: 16px;
+  max-width: 360px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+/* HEADER */
+.weather-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* NOW */
+.weather-now {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.weather-now .icon {
+  font-size: 36px;
+}
+
+.weather-now .temp {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.weather-now .humidity {
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+/* EXTRA INFO */
+.weather-extra {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 10px;
+  font-size: 13px;
+  opacity: 0.9;
+  margin-bottom: 14px;
+}
+
+.weather-extra span {
+  background: rgba(255,255,255,0.08);
+  padding: 6px 8px;
+  border-radius: 10px;
+}
+
+/* HOURLY */
+.weather-hourly {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+}
+
+.hour {
+  min-width: 64px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 8px 6px;
+  text-align: center;
+}
+
+/* TABLET */
+@media (max-width: 991px) {
+  .sidebar-weather-card {
+    
+  }
+}
+
+/* MOBILE */
+@media (max-width: 661px) {
+  .weather-extra {
+    grid-template-columns: 1fr;
+  }
+
+  .weather-now .temp {
+    font-size: 26px;
+  }
+}

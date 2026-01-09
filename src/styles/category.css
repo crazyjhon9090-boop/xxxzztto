@@ -1,0 +1,152 @@
+/* =========================
+   POST CATEGORY PAGE
+========================= */
+
+.category-page {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.category-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #111827;
+}
+
+/* =========================
+   GRID DE POSTS
+========================= */
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty {
+  padding: 40px;
+  background: #f9fafb;
+  border-radius: 14px;
+  color: #6b7280;
+  text-align: center;
+}
+
+/* =========================
+   PAGINAÇÃO
+========================= */
+
+.pagination {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  align-items: center;
+}
+
+.pagination button {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 991px) {
+  .posts-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}
+
+
+/* =========================
+   MOBILE — CATEGORY (ALINHADO COM HOME)
+========================= */
+@media (max-width: 661px) {
+
+  .category-title {
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+
+  /* GRID VIRA COLUNA (IGUAL HOME) */
+  .posts-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* CARD FLUIDO */
+  .category-page .post-card {
+    display: flex;
+    width: 310px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  /* IMAGEM LATERAL */
+  .category-page .post-image-wrapper {
+    flex: 0 0 110px;
+  }
+
+  .category-page {
+    width: 110px;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+  }
+
+  .post-image-wrapper img {
+        width: 280px;
+        height: 150px;
+        object-fit: fit;
+        border-radius: 2rem;
+  }
+
+
+  /* ESCONDE METAS GRANDES */
+  .category-page .post-category,
+  .category-page .post-date {
+    display: none;
+  }
+
+  /* CONTEÚDO */
+  .category-page .post-content {
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0; /* 🔥 evita overflow */
+  }
+
+  .post-content h3 {
+    text-align: center;
+  }
+
+  .post-content p{
+    text-align: justify;
+  }
+
+  .category-page {
+    font-size: 0.95rem;
+    line-height: 1.3;
+    margin-bottom: 4px;
+    
+  }
+
+  .category-page .post-content p {
+    font-size: 13px;
+    line-height: 1.4;
+    -webkit-line-clamp: 2;
+    text-align: left;
+  }
+}

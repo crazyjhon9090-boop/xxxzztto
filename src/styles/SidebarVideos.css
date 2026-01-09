@@ -1,0 +1,240 @@
+/* =========================
+   CONTAINER — sidebar moderna
+========================= */
+.sidebar-videos {
+  position: relative;
+  padding: 18px 16px;
+
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 18px;
+
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* =========================
+   SHAPES COM BLUR
+========================= */
+.sidebar-videos::before,
+.sidebar-videos::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.55;
+  z-index: 0;
+}
+
+.sidebar-videos::before {
+  width: 190px;
+  height: 190px;
+  background: #9fc5ff;
+  top: -50px;
+  left: -50px;
+}
+
+.sidebar-videos::after {
+  inset: 0;
+  background:
+    radial-gradient(220px 180px at 50% 55%, #e4d8ff 0%, transparent 65%),
+    radial-gradient(200px 160px at 80% 95%, #c8afff 0%, transparent 70%);
+}
+
+/* conteúdo acima do blur */
+.sidebar-videos > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* =====================
+   TÍTULO — CENTRALIZADO
+===================== */
+.sidebar-title {
+  font-family: "Playfair Display", serif;
+  font-size: 16px;
+  color: #0f172a;
+
+  text-align: center;
+  margin-bottom: 16px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* linha decorativa abaixo */
+.sidebar-title::after {
+  content: "";
+  width: 64px;
+  height: 2px;
+  margin-top: 6px;
+
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 999px;
+}
+
+/* =====================
+   LISTA DE VÍDEOS
+===================== */
+.videos-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* =====================
+   CARD DE VÍDEO
+===================== */
+.video-card {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 22px;
+  transition: transform .2s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-3px);
+}
+
+.video-iframe iframe {
+  width: 100%;
+  max-width: 320px;
+  height: 180px;
+  border-radius: 12px;
+}
+
+/* =====================
+   TÍTULO DO VÍDEO
+===================== */
+.video-title {
+  display: flex;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
+  text-decoration: none;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.video-title:hover {
+  color: #2563eb;
+}
+
+/* =====================
+   CATEGORIAS
+===================== */
+.video-categories {
+  margin-top: 26px;
+  text-align: center;
+}
+
+.categories-title {
+  font-family: "Playfair Display", serif;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.category-btn {
+  background: #f8fafc;
+  padding: 6px 14px;
+  font-size: 13px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #334155;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
+}
+
+.category-btn:hover {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #fff;
+}
+
+/* =========================
+   TABLET (661px – 991px)
+========================= */
+@media (min-width: 661px) and (max-width: 991px) {
+  .sidebar-videos {
+    padding: 16px 14px;
+  }
+
+  .sidebar-title {
+    font-size: 17px;
+  }
+
+  .sidebar-title::after {
+    width: 56px;
+  }
+
+  .video-iframe iframe {
+    height: 200px;
+  }
+
+  .video-title {
+    font-size: 13px;
+  }
+}
+
+/* =========================
+   MOBILE (≤ 660px)
+========================= */
+@media (max-width: 660px) {
+      .sidebar-videos{
+        margin: 15px 0px;
+        padding: 16px 12px;
+        border-radius: 14px;
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+        max-width: 390px;
+    }
+
+  /* reduz blur pesado no mobile */
+  .sidebar-videos::before,
+  .sidebar-videos::after {
+    opacity: 0.25;
+    filter: blur(28px);
+  }
+
+  .sidebar-title {
+    font-size: 15px;
+  }
+
+  .sidebar-title::after {
+    width: 48px;
+  }
+
+  .video-iframe iframe {
+    height: 190px;
+  }
+
+  /* categorias com scroll horizontal */
+  .category-buttons {
+    flex-wrap: nowrap;
+    justify-content: center;
+    overflow-x: auto;
+    padding-bottom: 6px;
+
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .category-buttons::-webkit-scrollbar {
+    display: none;
+  }
+
+  .category-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: 13px;
+    padding: 7px 14px;
+  }
+}

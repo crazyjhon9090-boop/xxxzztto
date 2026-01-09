@@ -1,0 +1,111 @@
+/* =========================
+   CAROUSEL (PROFISSIONAL)
+========================= */
+
+.carousel {
+  position: relative;
+  width: 100%;
+  margin: 20px auto;
+  border-radius: 20px;
+  background: #1a1a1a; /* Fundo escuro elegante para fotos que não preenchem tudo */
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  
+  /* Altura padronizada para manter o profissionalismo */
+  aspect-ratio: 16 / 9; 
+}
+
+/* =========================
+   TRACK
+========================= */
+
+.carousel-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+/* =========================
+   SLIDE
+========================= */
+
+.carousel-slide {
+  min-width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000; /* Garante que o fundo do slide seja uniforme */
+}
+
+/* =========================
+   IMAGEM (🔥 PADRONIZAÇÃO REAL)
+========================= */
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  
+  /* 
+     'contain' garante que a foto apareça INTEIRA sem esticar.
+     Como o container tem altura fixa, todas as fotos ficarão 
+     alinhadas no mesmo espaço, sem o layout "pular".
+  */
+  object-fit: contain; 
+  
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+/* =========================
+   BOTÕES (DESIGN REFINADO)
+========================= */
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px); /* Efeito de vidro moderno */
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.carousel-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn.prev { left: 20px; }
+.carousel-btn.next { right: 20px; }
+
+/* =========================
+   MOBILE (ADAPTAÇÃO)
+========================= */
+
+@media (max-width: 768px) {
+  .carousel {
+    /* No mobile, uma proporção um pouco mais alta fica melhor */
+    aspect-ratio: 4 / 3; 
+    border-radius: 15px;
+  }
+
+  .carousel-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .carousel-btn.prev { left: 10px; }
+  .carousel-btn.next { right: 10px; }
+}

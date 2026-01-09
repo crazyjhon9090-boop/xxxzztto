@@ -1,0 +1,99 @@
+.admin-users {
+  width: 100%;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.table-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  overflow-x: auto;
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.user-table th,
+.user-table td {
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.user-table th {
+  background: #f3f4f6;
+  font-weight: 600;
+}
+
+.user-table tr:not(:last-child) {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.user-table select {
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
+}
+
+.uid {
+  font-size: 0.75rem;
+  max-width: 160px;
+  word-break: break-all;
+}
+
+.actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+/* ===============================
+   991px
+================================ */
+
+@media (max-width: 991px) {
+  .user-table th:nth-child(1),
+  .user-table td:nth-child(1) {
+    display: none;
+  }
+}
+
+/* ===============================
+   661px
+================================ */
+
+@media (max-width: 661px) {
+  .admin-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .user-table thead {
+    display: none;
+  }
+
+  .user-table tr {
+    display: block;
+    margin-bottom: 1rem;
+    background: #f9fafb;
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .user-table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.4rem 0;
+  }
+}

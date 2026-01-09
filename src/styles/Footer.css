@@ -1,0 +1,229 @@
+/* =========================
+   FOOTER — FUNDO COM SHAPES
+========================= */
+
+.footer {
+  position: relative;
+  width: 100%;
+  padding: 28px 20px 16px;
+
+  color: #202020;
+  overflow: hidden;
+
+  border-top: 1px solid rgba(0,0,0,.05);
+}
+
+/* shape "fumaça" central */
+.footer::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%) rotate(25deg);
+
+  width: 520px;
+  height: 520px;
+
+  background: radial-gradient(
+    circle,
+    rgba(120, 150, 255, 0.28) 0%,
+    rgba(100, 130, 240, 0.18) 30%,
+    rgba(80, 105, 210, 0.10) 55%,
+    transparent 75%
+  );
+
+  filter: blur(50px);
+  opacity: .9;
+  pointer-events: none;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.footer-container {
+  position: relative;
+  z-index: 2;
+
+  max-width: 1150px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+
+  padding: 24px;
+
+  background: rgba(255,255,255,.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border-radius: 22px;
+  border: 1px solid rgba(0,0,0,.05);
+  box-shadow: 0 18px 40px rgba(0,0,0,.10);
+}
+
+/* =========================
+   COLUNAS
+========================= */
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-column.center {
+  align-items: center;
+  text-align: center;
+}
+
+/* =========================
+   TÍTULOS
+========================= */
+
+.footer-column h4 {
+  margin-bottom: 6px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.footer-logo {
+  margin-bottom: 8px;
+}
+
+.footer-logo img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+
+  border: 2px solid rgba(70, 105, 220, 0.25);
+}
+
+/* =========================
+   LISTAS
+========================= */
+
+.social-links,
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* =========================
+   SOCIAL LINKS
+========================= */
+
+.social-links li {
+  margin-bottom: 8px;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 12px;
+
+  color: #0c0c0c;
+  text-decoration: none;
+
+  background: rgba(255,255,255,.45);
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 12px;
+
+  transition: transform .15s ease, background .2s ease, box-shadow .2s ease;
+}
+
+.social-links a:hover {
+  transform: translateY(-2px) scale(1.02);
+  background: rgba(255,255,255,.75);
+  box-shadow: 0 10px 25px rgba(0,0,0,.15);
+}
+
+/* =========================
+   FOOTER LINKS
+========================= */
+
+.footer-links li {
+  margin-bottom: 6px;
+}
+
+.footer-links a {
+  color: #201f1f;
+  text-decoration: none;
+  padding: 4px 0;
+
+  transition: opacity .25s, transform .15s;
+}
+
+.footer-links a:hover {
+  opacity: .75;
+  transform: translateX(3px);
+}
+
+/* =========================
+   FOOTER BOTTOM
+========================= */
+
+.footer-bottom {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 13px;
+  opacity: .85;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 991px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  .footer-column.center {
+    grid-column: span 2;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 660px) {
+  .footer {
+    padding: 22px 14px 14px;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 22px;
+    text-align: center;
+  }
+
+  .footer-column {
+    align-items: center;
+  }
+
+  .social-links a {
+    justify-content: center;
+  }
+
+  .footer-column h4 {
+    font-size: 14px;
+  }
+
+  .footer-bottom {
+    font-size: 12px;
+  }
+}

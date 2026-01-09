@@ -1,0 +1,160 @@
+/* =========================
+   CONTACT PAGE
+========================= */
+
+.contact-page {
+  padding: 24px 0;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* =========================
+   LAYOUT (CONTEÚDO + SIDEBAR)
+========================= */
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 40px;
+  align-items: start;
+}
+
+/* =========================
+   CONTEÚDO PRINCIPAL
+========================= */
+
+.contact-article {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.contact-form {
+  background: #fff;
+  padding: 28px;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.06);
+  box-sizing: border-box;
+}
+
+.contact-article h1 {
+  margin-bottom: 22px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  font-size: 14px;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 11px 12px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+button[type="submit"] {
+  margin-top: 18px;
+  padding: 13px;
+  background: #4da3ff;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+/* =========================
+   FEEDBACK
+========================= */
+
+.form-error {
+  margin-top: 12px;
+  color: #dc2626;
+  font-size: 14px;
+}
+
+.form-success {
+  margin-top: 12px;
+  color: #16a34a;
+  font-size: 14px;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 991px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .contact-article {
+    max-width: 100%;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+
+
+@media (max-width: 660px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    min-width: 100%;
+  }
+
+  .contact-page {
+    overflow-x: auto;
+    width: 100%;
+  }
+
+  .contact-article {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .contact-form {
+    padding: 0px;
+    border-radius: 12px;
+  }
+
+  .form-group label {
+    font-size: 13px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 13px;
+  }
+
+  .sidebar-container {
+    width: 100%;
+    margin-top: 24px;
+  }
+}

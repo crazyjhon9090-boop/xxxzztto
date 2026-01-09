@@ -1,0 +1,136 @@
+/* =========================
+   TABELA ADMIN POSTS
+========================= */
+
+.table-container {
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+  font-size: 14px;
+  vertical-align: top;
+}
+
+.admin-table th {
+  background: #f9fafb;
+  font-weight: 600;
+}
+
+.admin-table tr:hover {
+  background: #f3f4f6;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-edit {
+  background: #2563eb;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.btn-delete {
+  background: #dc2626;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.empty {
+  margin-top: 20px;
+  color: #6b7280;
+}
+
+/* =========================
+   RESPONSIVO ≤ 991px (tablet)
+========================= */
+
+@media (max-width: 991px) {
+  .admin-table th,
+  .admin-table td {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .btn-edit,
+  .btn-delete {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* =========================
+   RESPONSIVO ≤ 661px (mobile)
+========================= */
+
+@media (max-width: 661px) {
+  .admin-table,
+  .admin-table thead,
+  .admin-table tbody,
+  .admin-table th,
+  .admin-table td,
+  .admin-table tr {
+    display: block;
+  }
+
+  .admin-table thead {
+    display: none;
+  }
+
+  .admin-table tr {
+    background: #fff;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    padding: 10px;
+  }
+
+  .admin-table td {
+    border: none;
+    padding: 6px 0;
+    font-size: 13px;
+  }
+
+  .admin-table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    display: block;
+    color: #374151;
+    margin-bottom: 2px;
+  }
+
+  .actions {
+    flex-direction: row;
+    margin-top: 10px;
+  }
+
+  .btn-edit,
+  .btn-delete {
+    width: auto;
+    flex: 1;
+  }
+}
